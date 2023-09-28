@@ -6,31 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./operas-bas.component.css']
 })
 export class OperasBasComponent {
-  num1: string = '';
-  num2: string = '';
+  grados: string = '';
   resultado: number = 0;
   radioButton: string = '';
 
   calcular() {
-    const num1 = parseFloat(this.num1);
-    const num2 = parseFloat(this.num2);
+    const grados = parseFloat(this.grados);
+
 
     switch (this.radioButton) {
-      case 'Sumar':
-        this.resultado = num1 + num2;
+      case 'Celsius':
+        this.resultado = (grados * 9/5) + 32;
         break;
-      case 'Restar':
-        this.resultado = num1 - num2;
-        break;
-      case 'Multiplicar':
-        this.resultado = num1 * num2;
-        break;
-      case 'Dividir':
-        if (num2 !== 0) {
-          this.resultado = num1 / num2;
-        } else {
-          this.resultado = NaN; 
-        }
+      case 'Farenheit':
+        this.resultado = parseFloat(((grados - 32) * 5/9).toFixed(2));
         break;
       default:
         this.resultado = 0;
